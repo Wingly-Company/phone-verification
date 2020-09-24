@@ -1,0 +1,58 @@
+{
+    "name": "wingly/phone-verification",
+    "description": "Phone verification powered by Nexmo",
+    "authors": [
+        {
+            "name": "Dimitris Karapanos",
+            "email": "dimitris@wingly.io",
+            "homepage": "https://www.wingly.io",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/Wingly-Company/phone-verification",
+    "keywords": [
+        "Laravel",
+        "Nexmo"
+    ],
+    "require": {
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/console": "^8.0",
+        "illuminate/database": "^8.0",
+        "illuminate/support": "^8.0",
+        "nexmo/laravel": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "mockery/mockery": "^1.3",
+        "orchestra/testbench": "^6.0",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wingly\\PhoneVerification\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wingly\\PhoneVerification\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wingly\\PhoneVerification\\PhoneVerificationServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "format": [
+            "vendor/bin/php-cs-fixer fix"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
