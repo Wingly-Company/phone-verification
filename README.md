@@ -1,5 +1,8 @@
 # Phone Verification
 
+![tests](https://github.com/Wingly-Company/phone-verification/workflows/tests/badge.svg)
+![code style](https://github.com/Wingly-Company/phone-verification/workflows/code%20style/badge.svg)
+
 ## Introduction 
 
 Add phone verification workflows to your Laravel users powered by [Vonage](https://github.com/vonage/vonage-php-sdk-core) verify api.
