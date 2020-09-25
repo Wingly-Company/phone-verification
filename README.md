@@ -2,14 +2,14 @@
 
 ## Introduction 
 
-The package adds phone number verifications through Nexmo verify api.  
+The package adds phone number verifications through [Vonage](https://github.com/vonage/vonage-php-sdk-core) verify api.  
 
 ## Installation 
 
 First make sure to configure the repository in your composer.json by running:
 
 ```bash
-composer config repositories.payments vcs https://github.com/Wingly-Company/phone-verification
+composer config repositories.phone-verification vcs https://github.com/Wingly-Company/phone-verification
 ```
 
 Then install the package by running:
@@ -28,11 +28,11 @@ php artisan migrate
 
 ## Configuration 
 
-With the package config file you can customize your workflow, brand, pin expiry etc. Please check the [Nexmo](https://developer.nexmo.com/verify/overview) documentation for all customization options. 
+With the package config file you can customize your workflow and your brand. Please check the [Vonage](https://developer.nexmo.com/verify/overview) for more information. 
 
 ### Enviroment keys 
 
-The package will also install the `nexmo/laravel` package. This package includes its own [configuration file](https://github.com/Nexmo/nexmo-laravel/blob/master/config/nexmo.php). You can use the `NEXMO_KEY` and `NEXMO_SECRET` environment variables to set your Nexmo public and secret key.
+You need to set your `VONAGE_KEY` and `VONAGE_SECRET` enviroment variables in order to use this package. 
 
 ### Model Preparation
 
@@ -57,24 +57,24 @@ class User extends Authenticatable
 
 ### Sending PIN codes
 
-To send a PIN code to a phone number you can use the `sendPhoneNumberVerificationCode` method. 
-The method will call Nexmo and initialize a verification workflow.
+To send a PIN code to a phone number you can use the `sendPhoneVerificationCode` method. 
+The method will call Vonage and initialize a verification workflow. You can optionally pass any [options](https://github.com/Vonage/vonage-php-sdk-core/blob/master/src/Verify/Request.php) that you want to override.
 
 ```php
 $user = User::find(1);
 
-$user->sendPhoneNumberVerificationCode();
+$user->sendPhoneVerificationCode(['code_length' => 6]);
 ```
 
 ### Checking PIN codes 
 
 When the user receives the PIN and enters it into your application you can verify the validity of the code 
-by using the `checkPhoneNumberVerificationCode` method. 
+by using the `checkPhoneVerificationCode` method. 
 
 ```php 
 $user = User::find(1);
 
-$user->checkPhoneNumberVerificationCode($code); // true/false
+$user->checkPhoneVerificationCode($code); // true/false
 ```
 
 You can check if a user has a verified number by using the `hasVerifiedPhoneNumber` method. 

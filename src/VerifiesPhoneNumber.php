@@ -2,7 +2,9 @@
 
 namespace Wingly\PhoneVerification;
 
-use Nexmo\Laravel\Facade\Nexmo;
+use Exception;
+use Vonage\Client;
+use Vonage\Verify\Request;
 
 trait VerifiesPhoneNumber
 {
@@ -11,24 +13,23 @@ trait VerifiesPhoneNumber
         return ! is_null($this->phone_verified_at);
     }
 
-    public function checkPhoneNumberVerificationCode(string $code)
+    public function checkPhoneVerificationCode(string $code)
     {
-        $success = Nexom::verify()->check($this->phone_verification_token, $code);
+        try {
+            app(Client::class)->verify()->check($this->phone_verification_token, $code);
 
-        if ($success) {
-            $this->forceFill([
+            return $this->forceFill([
                 'phone_verified_at' => $this->freshTimestamp(),
             ])->save();
+        } catch (Exception $e) {
+            return false;
         }
-
-        return $success;
     }
 
-    public function sendPhoneNumberVerificationCode()
+    public function sendPhoneVerificationCode($options = [])
     {
-        $verification = Nexmo::verify()->start(array_merge([
-            'number' => $this->getPhoneNumberForVerification(),
-        ], config('phone-verification')));
+        $verification = app(Client::class)->verify()
+            ->start($this->createRequest($options));
 
         return $this->forceFill([
             'phone_verified_at' => null,
@@ -36,8 +37,21 @@ trait VerifiesPhoneNumber
         ])->save();
     }
 
-    public function getPhoneNumberForVerification()
+    public function getPhoneForVerification()
     {
         return $this->phone_number;
+    }
+
+    protected function createRequest($options)
+    {
+        $request = new Request(
+            $this->getPhoneForVerification(),
+            config('phone-verification.brand'),
+            config('phone-verification.workflow_id'),
+        );
+
+        $request->fromArray($options);
+
+        return $request;
     }
 }
