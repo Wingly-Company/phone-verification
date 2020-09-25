@@ -2,8 +2,8 @@
 
 namespace Wingly\PhoneVerification\Tests;
 
-use Vonage\Client;
 use Mockery as m;
+use Vonage\Client;
 use Vonage\Verify\Client as VerifyClient;
 use Vonage\Verify\Verification;
 

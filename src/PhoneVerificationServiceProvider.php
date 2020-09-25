@@ -2,10 +2,10 @@
 
 namespace Wingly\PhoneVerification;
 
+use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic as BasicCredentials;
-use Illuminate\Contracts\Config\Repository as Config;
 
 class PhoneVerificationServiceProvider extends ServiceProvider
 {

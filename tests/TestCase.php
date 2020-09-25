@@ -2,11 +2,11 @@
 
 namespace Wingly\PhoneVerification\Tests;
 
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Wingly\PhoneVerification\PhoneVerificationServiceProvider;
 use Wingly\PhoneVerification\Tests\Fixtures\User;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 abstract class TestCase extends Orchestra
 {
