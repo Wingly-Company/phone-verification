@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-The package adds phone number verifications through [Vonage](https://github.com/vonage/vonage-php-sdk-core) verify api.  
+Add phone verification workflows to your Laravel users powered by [Vonage](https://github.com/vonage/vonage-php-sdk-core) verify api.
 
 ## Installation 
 
