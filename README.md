@@ -31,7 +31,7 @@ php artisan migrate
 
 ## Configuration 
 
-With the package config file you can customize your workflow and your brand. Please check the [Vonage](https://developer.nexmo.com/verify/overview) for more information. 
+With the package config file you can customize your workflow and your brand. Please check the [Vonage](https://developer.nexmo.com/verify/overview) documentation for more information. 
 
 ### Enviroment keys 
 
