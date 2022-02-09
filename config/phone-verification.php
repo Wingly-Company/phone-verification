@@ -7,5 +7,5 @@ return [
 
     'workflow_id' => 6,
 
-    'brand' => env('APP_NAME', 'Laravel')
+    'brand' => env('APP_NAME', 'Laravel'),
 ];
