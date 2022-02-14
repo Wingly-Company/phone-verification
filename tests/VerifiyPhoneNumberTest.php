@@ -7,7 +7,7 @@ use Vonage\Client;
 use Vonage\Verify\Client as VerifyClient;
 use Vonage\Verify\Verification;
 
-class VerifyPhoneNumberTest extends TestCase
+class VerifiyPhoneNumberTest extends TestCase
 {
     public function test_can_send_phone_verification_code()
     {
