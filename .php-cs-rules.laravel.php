@@ -15,6 +15,7 @@ return [
     'blank_line_before_statement' => [
         'statements' => ['return']
     ],
+    'blank_lines_before_namespace' => true,
     'braces' => true,
     'cast_spaces' => true,
     'class_attributes_separation' => [
@@ -106,7 +107,6 @@ return [
     'short_scalar_cast' => true,
     'simplified_null_return' => true,
     'single_blank_line_at_eof' => true,
-    'single_blank_line_before_namespace' => true,
     'single_class_element_per_statement' => true,
     'single_import_per_statement' => true,
     'single_line_after_imports' => true,
