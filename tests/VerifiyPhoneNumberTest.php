@@ -33,9 +33,13 @@ class VerifiyPhoneNumberTest extends TestCase
         $this->mock(Client::class, function ($mock) {
             $verifyClient = m::mock(VerifyClient::class);
             $verification = m::mock(Verification::class);
-            $mock->shouldReceive('verify')->andReturn($verifyClient)->once();
+            $mock->shouldReceive('verify')->andReturn($verifyClient)->twice();
+            $verifyClient->shouldReceive('start')->andReturn($verification)->once();
+            $verification->shouldReceive('getRequestId')->andReturn('foo')->once();
             $verifyClient->shouldReceive('check')->andReturn($verification)->once();
         });
+
+        $user->sendPhoneVerificationCode();
 
         $user->checkPhoneVerificationCode($code = '1234');
 

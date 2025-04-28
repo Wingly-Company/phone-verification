@@ -15,6 +15,10 @@ trait VerifiesPhoneNumber
 
     public function checkPhoneVerificationCode(string $code)
     {
+        if (empty($this->phone_verification_token)) {
+            return false;
+        }
+
         try {
             app(Client::class)->verify()->check($this->phone_verification_token, $code);
 
