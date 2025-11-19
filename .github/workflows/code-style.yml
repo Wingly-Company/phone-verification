@@ -3,27 +3,22 @@ name: code style
 on: [push]
 
 jobs:
-  php-cs-fixer:
+  pint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout 🛎
+        uses: actions/checkout@v5
 
-      - name: Run PHP CS Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+      - name: Setup PHP 🐘
+        uses: shivammathur/setup-php@v2
         with:
-          args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+          php-version: 8.3
+          tools: cs2pr
+          coverage: none
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
+      - name: Install Dependencies 👨‍💻
+        uses: ramsey/composer-install@v3
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Fix styling
-          branch: ${{ steps.extract_branch.outputs.branch }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Execute Code Style Check 👀
+        run: vendor/bin/pint --test --format=checkstyle | cs2pr
