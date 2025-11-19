@@ -16,4 +16,14 @@ class User extends Model
     protected $casts = [
         'phone_verified_at' => 'datetime',
     ];
+
+    public function getPhoneForVerification(): string
+    {
+        return $this->phone_number;
+    }
+
+    public function getPhoneVerificationLocale(): string
+    {
+        return 'en-gb';
+    }
 }

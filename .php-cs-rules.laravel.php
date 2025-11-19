@@ -16,7 +16,13 @@ return [
         'statements' => ['return']
     ],
     'blank_lines_before_namespace' => true,
-    'braces' => true,
+    'single_space_around_construct' => true,
+    'control_structure_braces' => true,
+    'control_structure_continuation_position' => true,
+    'declare_parentheses' => true,
+    'no_multiple_statements_per_line' => true,
+    'braces_position' => true,
+    'statement_indentation' => true,
     'cast_spaces' => true,
     'class_attributes_separation' => [
         'elements' => [
@@ -33,7 +39,7 @@ return [
     'full_opening_tag' => true,
     'fully_qualified_strict_types' => true, // added by Shift
     'function_declaration' => true,
-    'function_typehint_space' => true,
+    'type_declaration_spaces' => true,
     'heredoc_to_nowdoc' => true,
     'include' => true,
     'increment_style' => ['style' => 'post'],
@@ -77,9 +83,8 @@ return [
     'no_singleline_whitespace_before_semicolons' => true,
     'no_spaces_after_function_name' => true,
     'no_spaces_around_offset' => true,
-    'no_spaces_inside_parenthesis' => true,
-    'no_trailing_comma_in_list_call' => true,
-    'no_trailing_comma_in_singleline_array' => true,
+    'spaces_inside_parentheses' => true,
+    'no_trailing_comma_in_singleline' => true,
     'no_trailing_whitespace' => true,
     'no_trailing_whitespace_in_comment' => true,
     'no_unneeded_control_parentheses' => true,
@@ -125,7 +130,7 @@ return [
     ],
     'trim_array_spaces' => true,
     'unary_operator_spaces' => true,
-    'visibility_required' => [
+    'modifier_keywords' => [
         'elements' => ['method', 'property']
     ],
     'whitespace_after_comma_in_array' => true,

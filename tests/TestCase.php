@@ -33,12 +33,12 @@ abstract class TestCase extends Orchestra
         ]);
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [PhoneVerificationServiceProvider::class];
     }
 
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('phone-verification.api_key', 'my_api_key');
         $app['config']->set('phone-verification.api_secret', 'my_secret');

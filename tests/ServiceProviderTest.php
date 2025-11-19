@@ -2,11 +2,13 @@
 
 namespace Wingly\PhoneVerification\Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Vonage\Client;
 
 class ServiceProviderTest extends TestCase
 {
-    public function test_client_resolution_from_container()
+    #[Test]
+    public function client_resolution_from_container(): void
     {
         $client = app(Client::class);
 

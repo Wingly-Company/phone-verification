@@ -1,6 +1,6 @@
 <?php
 
-$finder = (new \PhpCsFixer\Finder())
+$finder = (new PhpCsFixer\Finder())
     ->notPath('vendor')
     ->notPath('bootstrap')
     ->notPath('storage')
@@ -13,7 +13,8 @@ $finder = (new \PhpCsFixer\Finder())
     ->name('*.php')
     ->in(__DIR__);
 
-return (new \PhpCsFixer\Config())
+return (new PhpCsFixer\Config())
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRules(array_merge(require '.php-cs-rules.laravel.php', [
         '@PSR2' => true,
         '@PSR12' => true,
